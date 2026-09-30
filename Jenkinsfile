@@ -3,15 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Docker Build') {
             steps {
-                bat '"C:\\Users\\HP\\AppData\\Local\\Python\\bin\\python.exe" app.py'
+                bat 'docker build -t cicd-demo .'
             }
         }
 
-        stage('Test') {
+        stage('Docker Run') {
             steps {
-                echo 'Test stage completed'
+                bat 'docker run --rm cicd-demo'
             }
         }
     }
